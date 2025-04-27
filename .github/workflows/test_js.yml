@@ -3,7 +3,7 @@ on: push
 
 jobs:
   test-add:
-    needs: Lint
+    needs: lint
     runs-on: ubuntu latest
 
     steps:
@@ -20,7 +20,7 @@ jobs:
 
     - name: Run tests
       run: npm run
-  Lint:
+  lint:
   #needs: Test-add
     runs-on: ubuntu latest
 
@@ -38,3 +38,4 @@ jobs:
 
     - name: Run linter
       run: npm run Lint
+  
