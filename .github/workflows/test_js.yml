@@ -2,7 +2,8 @@ name: JS Tests
 on: push
 
 jobs:
-  test:
+  test-add:
+    needs: Lint
     runs-on: ubuntu latest
 
     steps:
@@ -19,3 +20,21 @@ jobs:
 
     - name: Run tests
       run: npm run
+  Lint:
+  #needs: Test-add
+    runs-on: ubuntu latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+       
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22.14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run linter
+      run: npm run Lint
